@@ -4,7 +4,7 @@ from aiogram.types import Message
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiohttp import web
 
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("7386776994:AAF_Irc3m6nRP7hHN38r5m-pAD7ggFwYMrs")
 WEBHOOK_PATH = "/webhook"
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "supersecret")
 APP_URL = os.getenv("RENDER_EXTERNAL_URL")
