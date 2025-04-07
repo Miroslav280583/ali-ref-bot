@@ -1,6 +1,5 @@
-
 import os
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
@@ -28,6 +27,7 @@ async def on_shutdown(app):
     await bot.delete_webhook()
 
 app = web.Application()
+
 SimpleRequestHandler(
     dispatcher=dp,
     bot=bot,
@@ -37,6 +37,6 @@ SimpleRequestHandler(
 app.on_startup.append(on_startup)
 app.on_shutdown.append(on_shutdown)
 
-if __name__ == "__main__":
+if name == "main":
     setup_application(app, dp)
     web.run_app(app, port=int(os.getenv("PORT", 8080)))
