@@ -37,6 +37,6 @@ SimpleRequestHandler(
 app.on_startup.append(on_startup)
 app.on_shutdown.append(on_shutdown)
 
-if name == "main":
+if __name__ == "__main__":
     setup_application(app, dp)
     web.run_app(app, port=int(os.getenv("PORT", 8080)))
