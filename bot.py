@@ -36,5 +36,12 @@ app.add_routes([web.post(WEBHOOK_PATH, handle_webhook)])
 app.on_startup.append(on_startup)
 app.on_shutdown.append(on_shutdown)
 
-if __name__ == "__main__":
-    web.run_app(app, port=int(os.getenv("PORT", 8080)))
+if __name__ == '__main__':
+    import asyncio
+
+    async def main():
+        await on_startup(app)
+        try:
+            web.run_app(app, port=int(os.getenv("PORT", 10000)))
+        finally:
+            await on_shutdown(app)
