@@ -23,10 +23,7 @@ async def handle_message(message: Message):
         for link in links:
             full_link = "https://www.aliexpress.com/item/" + link
             ref_link = REF_PREFIX + full_link
-            reply_text += f"Ось твій реферальний лінк:
-{ref_link}
-
-"
+            reply_text += f"Ось твій реферальний лінк:/n{ref_link}/n/n"
         await message.reply(reply_text.strip())
     else:
         await message.reply("Надішли мені посилання з AliExpress, і я зроблю його реферальним.")
