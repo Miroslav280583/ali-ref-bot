@@ -15,11 +15,12 @@ dp = Dispatcher(storage=MemoryStorage())
 
 @dp.message()
 async def handle_message(message: Message):
-    if "http" in message.text:
-        await message.reply("Твій реферальний лінк: [тут буде логіка]")
+    if "aliexpress.com" in message.text:
+        user_link = message.text.strip()
+        ref_link = f"https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/{user_link}"
+        await message.reply(f"Ось твоє реферальне посилання:\n{ref_link}")
     else:
         await message.reply("Надішли мені посилання з AliExpress, і я зроблю його реферальним.")
-
 async def on_startup(app):
     await bot.set_webhook(f"{APP_URL}{WEBHOOK_PATH}", secret_token=WEBHOOK_SECRET)
 
