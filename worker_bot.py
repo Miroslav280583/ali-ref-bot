@@ -24,7 +24,7 @@ async def send_post():
     product = await fetch_random_product()
     ref_link = REF_PREFIX + product["url"]
 
-    caption = f"<b>{product['title']}</b>
+    caption = f"<b>{product['title']}</b>\n<a href='{product['url']}'>Перейти до товару</a>"
 Ціна: ${product['price']}
 "
     button = InlineKeyboardMarkup(inline_keyboard=[
