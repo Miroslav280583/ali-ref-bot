@@ -16,7 +16,7 @@ products = [
     {
         "title": "Супер крутий гаджет для дому",
         "url": "https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/https://www.aliexpress.com/item/1005001234567890.html",
-        "image": "https://ae01.alicdn.com/kf/HTB1JtRLKpXXXXazXXXXq6xXFXXXC.jpg"
+        "image": "https://ae01.alicdn.com/kf/S4c3e2ff5ef174da28b24c19a3d2d4b10n.jpg"
     },
     {
         "title": "Годинник майбутнього",
