@@ -1,52 +1,45 @@
 
-import os
 import asyncio
-import aiohttp
-from aiogram import Bot
-from aiogram.types import InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
+import logging
+import os
+from aiogram import Bot, Dispatcher
+from aiogram.types import InputMediaPhoto
+from datetime import datetime
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_ID = "@AliTopDeals"
-REF_PREFIX = "https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/?ulp="
 
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token=TOKEN, parse_mode="HTML")
+dp = Dispatcher()
 
-async def fetch_random_product():
-    # Спрощено: фіксоване посилання, щоб перевірити логіку
-    return {
-        "title": "🔥 Топ-продукт з AliExpress",
-        "url": "https://www.aliexpress.com/item/1005001234567890.html",
-        "price": "19.99",
-        "image": "https://ae01.alicdn.com/kf/HTB1.product_image.jpg"
+products = [
+    {
+        "title": "Супер крутий гаджет для дому",
+        "url": "https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/https://www.aliexpress.com/item/1005001234567890.html",
+        "image": "https://ae01.alicdn.com/kf/HTB1JtRLKpXXXXazXXXXq6xXFXXXC.jpg"
+    },
+    {
+        "title": "Годинник майбутнього",
+        "url": "https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/https://www.aliexpress.com/item/1005002345678901.html",
+        "image": "https://ae01.alicdn.com/kf/H1234abcd5678efghijklmnop.jpg"
     }
+]
 
-async def send_post():
-    product = await fetch_random_product()
-    ref_link = REF_PREFIX + product["url"]
-
-    caption = f"<b>{product['title']}</b>\n<a href='{product['url']}'>Перейти до товару</a>"
-Ціна: ${product['price']}
-"
-    button = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🛒 Купити на AliExpress", url=ref_link)]
-    ])
-
-    try:
-        await bot.send_photo(
-            chat_id=CHANNEL_ID,
-            photo=product["image"],
-            caption=caption,
-            reply_markup=button,
-            parse_mode="HTML"
-        )
-        print("✅ Пост відправлено")
-    except Exception as e:
-        print("❌ Помилка при відправленні посту:", e)
-
-async def main_loop():
+async def post_to_channel():
     while True:
-        await send_post()
-        await asyncio.sleep(3600)  # 1 година
+        product = products[datetime.now().hour % len(products)]
+        caption = f"<b>{product['title']}</b>\n<a href='{product['url']}'>Перейти до товару</a>"
+        try:
+            await bot.send_photo(
+                chat_id=CHANNEL_ID,
+                photo=product["image"],
+                caption=caption
+            )
+            print(f"✅ Пост надіслано до {CHANNEL_ID}")
+        except Exception as e:
+            logging.error(f"❌ Помилка: {e}")
+        await asyncio.sleep(3600)
 
 if __name__ == "__main__":
-    asyncio.run(main_loop())
+    logging.basicConfig(level=logging.INFO)
+    asyncio.run(post_to_channel())
