@@ -21,7 +21,7 @@ products = [
     {
         "title": "Годинник майбутнього",
         "url": "https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/https://www.aliexpress.com/item/1005002345678901.html",
-        "image": "https://ae01.alicdn.com/kf/H1234abcd5678efghijklmnop.jpg"
+        "image": "https://ae04.alicdn.com/kf/Hc13a7d8d4b1b4cbf8ecf30c95d8ed26a8.jpg"
     }
 ]
 
