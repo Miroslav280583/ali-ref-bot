@@ -7,7 +7,7 @@ from aiogram.types import InputMediaPhoto
 from datetime import datetime
 
 TOKEN = os.getenv("BOT_TOKEN")
-CHANNEL_ID = 1002638030609
+CHANNEL_ID = -1002638030609
 
 bot = Bot(token=TOKEN, parse_mode="HTML")
 dp = Dispatcher()
