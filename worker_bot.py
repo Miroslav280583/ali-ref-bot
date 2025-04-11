@@ -11,7 +11,7 @@ bot = Bot(token=TOKEN, parse_mode="HTML")
 product = {
     "title": "Годинник майбутнього",
     "url": "https://rzekl.com/g/1e8d114494fa41a0c5ab16525dc3e8/https://www.aliexpress.com/item/1005002345678901.html",
-    "image": "https://ae04.alicdn.com/kf/S9a282bd8f0f14f3da623b2dc96e4e401e.jpg"
+    "image": "https://http.cat/200.jpg"
 }
 
 async def send_test_post():
