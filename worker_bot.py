@@ -4,7 +4,7 @@ import os
 from aiogram import Bot
 
 TOKEN = os.getenv("BOT_TOKEN")
-CHANNEL_ID = -1001234567890  # <-- заміни на свій справжній channel_id
+CHANNEL_ID = -1002638030609  # <-- заміни на свій справжній channel_id
 
 bot = Bot(token=TOKEN, parse_mode="HTML")
 
