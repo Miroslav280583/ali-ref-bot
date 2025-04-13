@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: ali-ref-bot-web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: WEBHOOK_SECRET
+        sync: false
+
+  - type: worker
+    name: ali-ref-bot-auto
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python worker_bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
